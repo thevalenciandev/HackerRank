@@ -2,7 +2,10 @@ import Data.List
 
 main = do n <- getLine
           m <- sequence (replicate (read n) getLine)
-          return ()
+          putStrLn $ show $ solve (read n) (toMatrix n m)
+
+toMatrix :: String -> [String] -> [[Int]]
+toMatrix n xs = chunkify (read n) (map read $ concat $ map words xs)
 
 solve :: Int -> [[Int]] -> Int
 solve n m = abs (sum ltr - sum rtl)
