@@ -9,8 +9,7 @@ main = do [_,k] <- getList
             putStrLn $ show tr
           
 getList :: Read a => IO [a]
-getList = do l <- getLine
-             return $ map read $ words l
+getList = map read . words <$> getLine
 
 totalrefund :: Int -> Int -> [Int] -> Int
 totalrefund k b xs = b - (billsplit k xs)
