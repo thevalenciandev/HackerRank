@@ -6,10 +6,10 @@ main = do s  <- getLine
           n  <- readLn
           qs <- sequence (replicate n (read <$> getLine))
           let ws = calcweights s
-          mapM_ putStrLn (solve qs ws)
+          mapM_ putStrLn (solve ws qs)
 
-solve :: [Int] -> Set.Set Int -> [String]
-solve qs ws = foldr (\q acc -> if Set.member q ws then "Yes":acc else "No":acc) [] qs
+solve :: Set.Set Int -> [Int] -> [String]
+solve ws = foldr (\q acc -> if Set.member q ws then "Yes":acc else "No":acc) []
 
 -- State keeps track of weights, last character processed and how many times
 type WeightState = (Set.Set Int, Char, Int)
