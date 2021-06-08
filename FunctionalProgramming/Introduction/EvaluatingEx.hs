@@ -4,5 +4,5 @@ main = do n  <- readLn
           mapM_ (putStrLn . show) results
 
 solve :: Double -> Double
-solve x = let series = 1.0:[x**i / (product [1..i]) | i<-[1..]]
+solve x = let series = [x**i / (product [1..i]) | i<-[0..]]
           in  sum $ take 10 series 
